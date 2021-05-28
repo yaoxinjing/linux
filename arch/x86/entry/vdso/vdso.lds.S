@@ -27,6 +27,8 @@ VERSION {
 		__vdso_time;
 		clock_getres;
 		__vdso_clock_getres;
+		__vdso_getcounter;
+		getcounter;
 	local: *;
 	};
 }
