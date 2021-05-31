@@ -23,6 +23,7 @@ SECTIONS
 #define EMIT_VVAR(name, offset) vvar_ ## name = vvar_page + offset;
 #include <asm/vvar.h>
 #undef EMIT_VVAR
+vvar__vcounter = vvar_page + 512;
 
 	pvclock_page = vvar_start + PAGE_SIZE;
 	hvclock_page = vvar_start + 2 * PAGE_SIZE;

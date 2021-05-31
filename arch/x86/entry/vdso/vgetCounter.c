@@ -6,14 +6,15 @@
  */
 
 #include <linux/kernel.h>
-#include <linux/getcpu.h>
+
 #include <linux/time.h>
-#include <asm/vgtod.h>
+
+extern long vvar__vcounter__attribute__((visibility("hidden")));
 
 notrace long __vdso_getcounter(long counter)
 {
 
-	return counter;
+	return counter + vvar__vcounter;
 }
 
 long getcounter(long counter)

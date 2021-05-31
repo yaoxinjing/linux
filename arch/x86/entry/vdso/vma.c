@@ -32,6 +32,9 @@
 	const size_t name ## _offset = offset;
 #include <asm/vvar.h>
 
+long _vcounter
+__attribute__((section(".vvar__vcounter"), aligned(16))) __visible;
+
 struct vdso_data *arch_get_vdso_data(void *vvar_page)
 {
 	return (struct vdso_data *)(vvar_page + _vdso_data_offset);
@@ -447,6 +450,7 @@ __setup("vdso=", vdso_setup);
 static int __init init_vdso(void)
 {
 	BUILD_BUG_ON(VDSO_CLOCKMODE_MAX >= 32);
+	_vcounter = 10;
 
 	init_vdso_image(&vdso_image_64);
 

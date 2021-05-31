@@ -200,6 +200,9 @@ SECTIONS
 #include <asm/vvar.h>
 #undef EMIT_VVAR
 
+		. = __vvar_beginning_hack + offset;	
+		*(.vvar__vcounter)
+
 		/*
 		 * Pad the rest of the page with zeros.  Otherwise the loader
 		 * can leave garbage here.
