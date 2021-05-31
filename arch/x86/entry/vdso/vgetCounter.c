@@ -9,7 +9,8 @@
 
 #include <linux/time.h>
 
-extern long vvar__vcounter__attribute__((visibility("hidden")));
+extern long vvar__vcounter
+__attribute__((visibility("hidden")));
 
 notrace long __vdso_getcounter(long counter)
 {

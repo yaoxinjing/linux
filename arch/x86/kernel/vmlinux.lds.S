@@ -200,7 +200,7 @@ SECTIONS
 #include <asm/vvar.h>
 #undef EMIT_VVAR
 
-		. = __vvar_beginning_hack + offset;	
+		. = __vvar_beginning_hack + 1200;	
 		*(.vvar__vcounter)
 
 		/*
