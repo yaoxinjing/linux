@@ -27,13 +27,14 @@
 #include <asm/cpufeature.h>
 #include <clocksource/hyperv_timer.h>
 
+#include <vdso/sys_setCounter.h>
+
 #undef _ASM_X86_VVAR_H
 #define EMIT_VVAR(name, offset)	\
 	const size_t name ## _offset = offset;
 #include <asm/vvar.h>
 
-long _vcounter
-__attribute__((section(".vvar__vcounter"), aligned(16))) __visible;
+
 
 struct vdso_data *arch_get_vdso_data(void *vvar_page)
 {
@@ -450,7 +451,7 @@ __setup("vdso=", vdso_setup);
 static int __init init_vdso(void)
 {
 	BUILD_BUG_ON(VDSO_CLOCKMODE_MAX >= 32);
-	_vcounter = 10;
+	_vcounter = 0;
 
 	init_vdso_image(&vdso_image_64);
 
